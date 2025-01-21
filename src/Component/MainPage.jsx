@@ -8,9 +8,8 @@ const MainPage = () => {
   const [path, setPath] = useState("DEV");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filter, setFilter] = useState("all");
-  const [rSelected, setRSelected] = useState("Favorite");
   const [favorites, setFavorites] = useState([]);
-  const [showFilteredData, setshowFilteredData] = useState("Favorite");
+  const [showFilteredData, setshowFilteredData] = useState("");
   const [createFormDetails, setCreateFormDetails] = useState({
     ApplicationName: "",
     OS: "",
@@ -26,7 +25,20 @@ const MainPage = () => {
   useEffect(() => {
     getData();
   }, []);
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem("favorites");
+    const favoritesArray = JSON.parse(storedFavorites);
 
+    const isFavoriteExits = favoritesArray.findIndex(
+      (val) => val.Environment === path
+    );
+
+    if (isFavoriteExits !== -1) {
+      setshowFilteredData("Favorite");
+    } else {
+      setshowFilteredData("All");
+    }
+  }, [path]);
   const getData = async () => {
     try {
       const data = await fetchData();
@@ -43,8 +55,6 @@ const MainPage = () => {
   }, [editFormDetails]);
 
   const handleDelete = async (id) => {
-    // const deletedData = createFormData.filter((val) => val.id !== id);
-    // setCreateFormData(deletedData);
     try {
       const data = await deleteData(id);
       console.log(data);
@@ -74,7 +84,7 @@ const MainPage = () => {
       Environment: "DEV",
     });
   };
-  console.log(filter);
+
   return (
     <>
       <div className=" w-[full] h-[40px] bg-[rgb(0,0,255)] ">
@@ -90,14 +100,14 @@ const MainPage = () => {
         </div>
       </div>
       <div>
-        <h2 className=" font-bold text-lg py-4 px-3">Environment</h2>
+        <h2 className=" font-bold text-[27px] py-3 px-3">Environment</h2>
         <div className=" flex justify-between">
           <div className="flex w-fit rounded-2xl px-2">
-            <div className="bg-[#227DD7] rounded-s-3xl rounded-r-3xl flex gap-10 items-center h-[30px]">
+            <div className="bg-[#227DD7] rounded-s-3xl rounded-r-3xl flex gap-10 items-center h-[35px]">
               <button
                 onClick={() => setPath("DEV")}
                 className={`${
-                  path === "DEV" && "bg-[#F06434] rounded-3xl h-[30px]"
+                  path === "DEV" && "bg-[#F06434] rounded-3xl h-[35px] "
                 } cursor-pointer px-6 text-[#FFFAEC]`}
               >
                 DEV
@@ -105,7 +115,7 @@ const MainPage = () => {
               <button
                 onClick={() => setPath("QA")}
                 className={`${
-                  path === "QA" && "bg-[#F06434]  rounded-3xl h-[30px]"
+                  path === "QA" && "bg-[#F06434]  rounded-3xl h-[35px]"
                 } cursor-pointer px-6 text-[#FFFAEC]`}
               >
                 QA
@@ -113,7 +123,7 @@ const MainPage = () => {
               <button
                 onClick={() => setPath("UAT")}
                 className={`${
-                  path === "UAT" && "bg-[#F06434]  rounded-3xl h-[30px]"
+                  path === "UAT" && "bg-[#F06434]  rounded-3xl h-[35px]"
                 } cursor-pointer px-6 text-[#FFFAEC]`}
               >
                 UAT
@@ -121,7 +131,7 @@ const MainPage = () => {
               <button
                 onClick={() => setPath("IO")}
                 className={`${
-                  path === "IO" && "bg-[#F06434]  rounded-3xl h-[30px]"
+                  path === "IO" && "bg-[#F06434]  rounded-3xl h-[35px]"
                 } cursor-pointer px-6 text-[#FFFAEC]`}
               >
                 IO
@@ -144,13 +154,14 @@ const MainPage = () => {
                     Environment: "DEV",
                   });
                 }}
-                className="bg-[#F06434] rounded-3xl px-[12px] py-[4px] text-white text-[13px] mx-3"
+                className="bg-[#F06434] rounded-3xl px-[12px] py-[px] text-white text-[13px] font-semibold mx-3 h-[35px]"
               >
                 +Add New
               </button>
             )}
           </div>
         </div>
+        <div></div>
         {path !== "" && (
           <div className=" flex">
             <div className=" px-3 pt-4">

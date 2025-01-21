@@ -67,6 +67,17 @@
       "Environment": "IO"
     },
     {
+      "id": "2b43c0cf-9377-408d-8222-dc8d535561a9",
+      "ApplicationName": "Product Development",
+      "SwaggerURL": "https://swagger.app4.dev",
+      "OS": "Linux",
+      "FTPPath": "/ftp/app4/dev",
+      "FTPLogPath": "/ftp/app4/dev/logs",
+      "FTPMonitorPath": "/ftp/app4/dev/monitor",
+      "DBName": "App4_DB",
+      "Environment": "DEV"
+    },
+    {
       "id": "c8b6e739-87fc-48d6-ba0e-fda90174c7ee",
       "ApplicationName": "PreProduction",
       "SwaggerURL": "https://swagger.app4.qa",

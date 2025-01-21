@@ -1,7 +1,9 @@
  //GET Api
  export const fetchData = async () => {
-    const res = await fetch("http://localhost:3000/data");
-    return await res.json();
+    const res = await fetch("/db.json");
+    
+    const arr = await res.json();
+     return arr.data
   };
 
 //Delete Api
@@ -24,8 +26,7 @@ export const updateData = async(id,updatedData)=>{
     const res = await fetch(`http://localhost:3000/data/${id}`,{
         method:"PUT",
         headers:{
-             "Content-Type":"application/json;charset=utf-8",
-         
+             "Content-Type":"application/json;charset=utf-8",        
         },
         body: JSON.stringify(updatedData)
     })

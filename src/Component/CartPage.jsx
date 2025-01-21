@@ -25,21 +25,23 @@ const CartPage = ({
 
   if (createFormData.length === 0) {
     return (
-      <div>
-        <p className=" text-xl font-bold py-20 text-center">
-          OOPS!!!, There is no data to show.
+      <div className=" bg-[#FFFFFF] border-b-2 border-l-2 border-r-2 shadow-sm rounded-md mx-3 py-4">
+        <p className=" text-xl font-bold  text-center text-gray-500">
+          OOPS!!!, Something went worng.
         </p>
       </div>
     );
   }
+
   let filteredData;
   if (showFilteredData === "Favorite") {
-    filteredData = favorites.filter(
-      (data) =>
+    filteredData = favorites.filter((data) => {
+      return (
         (data.ApplicationName.toLowerCase() === filter.toLowerCase() ||
           filter.toLowerCase() === "all") &&
         data.Environment === path
-    );
+      );
+    });
   } else {
     filteredData = createFormData.filter(
       (data) =>
@@ -57,7 +59,6 @@ const CartPage = ({
     localStorage.setItem("favorites", JSON.stringify(favoritesArray));
     setFavorites(favoritesArray);
   };
-  const storedFavorites = localStorage.getItem("favorites");
 
   const removeToFavorite = (id) => {
     const storedFavorites = localStorage.getItem("favorites");
@@ -66,17 +67,17 @@ const CartPage = ({
     localStorage.setItem("favorites", JSON.stringify(data));
     setFavorites(data);
   };
-  console.log(favorites);
+
   return filteredData.length === 0 ? (
     path !== "" && (
-      <div>
-        <p className=" text-xl font-bold py-20 text-center">
-          There is no data in this filter
+      <div className=" bg-[#FFFFFF] border-b-2 border-l-2 border-r-2 shadow-sm rounded-md mx-3 py-4">
+        <p className=" text-xl font-bold  text-center text-gray-500">
+          No Data Found
         </p>
       </div>
     )
   ) : (
-    <div className=" grid grid-cols-3 place-items-center gap-5 py-2 px-3">
+    <div className=" flex flex-wrap gap-5 py-2 px-3">
       {filteredData
         .filter(
           (data) =>
@@ -88,14 +89,14 @@ const CartPage = ({
           return (
             <div
               key={index}
-              className=" bg-white  border shadow-sm hover:shadow-lg  w-[350px] h-[280px] px-3 py-2 rounded-lg"
+              className=" bg-white  border-b-2  shadow-sm hover:shadow-lg  w-[360px] h-[280px] px-2 py-2 rounded-lg"
             >
               <div className="flex justify-between ">
                 <div className="flex flex-col gap-2 pb-2">
                   <p className="text-[15px] text-[#F57632] font-bold">
                     Application Name : {val.ApplicationName}
                   </p>
-                  <p className="text-[11px] text-[#227DD7] font-bold ">
+                  <p className="text-[12px] text-[#227DD7] font-bold ">
                     OS : <span>{val.OS}</span>
                   </p>
                 </div>
@@ -126,9 +127,12 @@ const CartPage = ({
                   )}
                 </div>
               </div>
-              <hr />
-              <p className="  text-[14px]  font-bold px-2 py-2 my-2 rounded-3xl">
-                Swagger URL : <a href={`${val.SwaggerURL}`}>{val.SwaggerURL}</a>
+              <hr className=" text-orange-500" />
+              <p className="  px-4 py-2 text-[14px] my-2 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-700  hover:shadow-lg transition duration-300">
+                Swagger URL :{" "}
+                <a href={`${val.SwaggerURL}`} className="hover:text-white">
+                  {val.SwaggerURL}
+                </a>
               </p>
               <div class="p-2 bg-gray-100 rounded-lg shadow-md">
                 <div class="space-y-3">
@@ -186,3 +190,5 @@ const CartPage = ({
 };
 
 export default CartPage;
+
+// grid grid-cols-3 place-items-center gap-5

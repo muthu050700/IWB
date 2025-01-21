@@ -18,7 +18,7 @@ const CreateForm = ({
       [e.target.name]: e.target.value,
     });
   };
-
+  console.log(editFormDetails);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (editFormDetails !== null) {
@@ -169,7 +169,7 @@ const CreateForm = ({
         </FormGroup>
         <div className=" flex justify-center ">
           <Button className=" bg-[#F06434] border-none font-medium">
-            Submit
+            {editFormDetails !== null ? "Update" : "Create"}
           </Button>{" "}
         </div>
       </Form>
