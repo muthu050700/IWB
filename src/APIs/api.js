@@ -1,13 +1,13 @@
  //GET Api
  export const fetchData = async () => {
-    const res = await fetch("http://localhost:3000/data");
+    const res = await fetch("http://localhost:3001/data");
      return await res.json();
   };
 
 //Delete Api
 
 export const deleteData = async (id)=>{
-    const res = await fetch(`http://localhost:3000/data/${id}`,{
+    const res = await fetch(`http://localhost:3001/data/${id}`,{
         method:"DELETE",
         headers:{
             "Content-Type":"application/json;charset=utf-8"
@@ -20,7 +20,7 @@ export const deleteData = async (id)=>{
 
 export const updateData = async(id,updatedData)=>{
 
-    const res = await fetch(`http://localhost:3000/data/${id}`,{
+    const res = await fetch(`http://localhost:3001/data/${id}`,{
         method:"PUT",
         headers:{
              "Content-Type":"application/json;charset=utf-8",        
@@ -37,7 +37,7 @@ export const updateData = async(id,updatedData)=>{
 export const createNewData = async (newData) => {
 
     try {
-      const response = await fetch('http://localhost:3000/data', {
+      const response = await fetch('http://localhost:3001/data', {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json', 
