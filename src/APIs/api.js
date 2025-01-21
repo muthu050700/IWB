@@ -13,7 +13,6 @@ export const deleteData = async (id)=>{
             "Content-Type":"application/json;charset=utf-8"
         }
     })
-
     return await res.json()
 }
 
