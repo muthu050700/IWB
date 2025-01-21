@@ -133,14 +133,25 @@
       "Environment": "DEV"
     },
     {
-      "id": "c54cfb9f-0310-438d-90af-52e7eb278e3e",
-      "ApplicationName": "EAM",
+      "id": "bce3a7a7-4739-4032-8cea-e9c395e0a802",
+      "ApplicationName": "Product Development",
       "OS": "Linux",
       "SwaggerURL": "https://swagger.app1.dev",
       "FTPPath": "/ftp/app1/dev",
       "FTPLogPath": "/ftp/app1/dev/logs",
-      "DBName": "xczca",
-      "FTPMonitorPath": "/ftp/app3/dev/monitor",
+      "DBName": "App3_DB",
+      "FTPMonitorPath": "/ftp/app4/dev/monitor",
+      "Environment": "DEV"
+    },
+    {
+      "id": "3706cb78-af19-4121-b156-f2bf3a49d487",
+      "ApplicationName": "EAM",
+      "OS": "Windows",
+      "SwaggerURL": "https://swagger.app1.dev",
+      "FTPPath": "/ftp/app3/dev",
+      "FTPLogPath": "/ftp/app1/dev/logs",
+      "DBName": "App2_DB",
+      "FTPMonitorPath": "/ftp/app4/dev/monitor",
       "Environment": "DEV"
     }
   ]
