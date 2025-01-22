@@ -1,16 +1,16 @@
 const localURL = "http://localhost:3001/data"
-const netlifyURL = "https://zesty-raindrop-b8e4c7.netlify.app/api/db/"
+const netlifyURL = "https://vite-project-6tqp.onrender.com/data"
 //GET Api
  export const fetchData = async () => {
-    const res = await fetch("https://zesty-raindrop-b8e4c7.netlify.app/api/db/data");
-     const arr =  await res.json();
-     return arr.data
+    const res = await fetch(netlifyURL);
+    return  await res.json();
+    
   };
 
 //Delete Api
 
 export const deleteData = async (id)=>{
-    const res = await fetch(`https://zesty-raindrop-b8e4c7.netlify.app/api/db/data/${id}`,{
+    const res = await fetch(`${netlifyURL}/${id}`,{
         method:"DELETE",
         headers:{
             "Content-Type":"application/json;charset=utf-8"
@@ -23,7 +23,7 @@ export const deleteData = async (id)=>{
 
 export const updateData = async(id,updatedData)=>{
 
-    const res = await fetch(`https://zesty-raindrop-b8e4c7.netlify.app/api/db/data/${id}`,{
+    const res = await fetch(`${netlifyURL}/${id}`,{
         method:"PUT",
         headers:{
              "Content-Type":"application/json;charset=utf-8",        
@@ -40,7 +40,7 @@ export const updateData = async(id,updatedData)=>{
 export const createNewData = async (newData) => {
 
     try {
-      const response = await fetch('https://zesty-raindrop-b8e4c7.netlify.app/api/db/data', {
+      const response = await fetch(netlifyURL, {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json', 
