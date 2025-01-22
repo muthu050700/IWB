@@ -1,13 +1,16 @@
- //GET Api
+const localURL = "http://localhost:3001/data"
+const netlifyURL = "https://zesty-raindrop-b8e4c7.netlify.app/api/db/"
+//GET Api
  export const fetchData = async () => {
-    const res = await fetch("http://localhost:3001/data");
-     return await res.json();
+    const res = await fetch("https://zesty-raindrop-b8e4c7.netlify.app/api/db/");
+     const arr =  await res.json();
+     return arr.data
   };
 
 //Delete Api
 
 export const deleteData = async (id)=>{
-    const res = await fetch(`http://localhost:3001/data/${id}`,{
+    const res = await fetch(`https://zesty-raindrop-b8e4c7.netlify.app/api/db/${id}`,{
         method:"DELETE",
         headers:{
             "Content-Type":"application/json;charset=utf-8"
