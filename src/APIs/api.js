@@ -10,7 +10,7 @@ const netlifyURL = "https://zesty-raindrop-b8e4c7.netlify.app/api/db/"
 //Delete Api
 
 export const deleteData = async (id)=>{
-    const res = await fetch(`https://zesty-raindrop-b8e4c7.netlify.app/api/db/data${id}`,{
+    const res = await fetch(`https://zesty-raindrop-b8e4c7.netlify.app/api/db/data/${id}`,{
         method:"DELETE",
         headers:{
             "Content-Type":"application/json;charset=utf-8"
