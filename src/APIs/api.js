@@ -23,7 +23,7 @@ export const deleteData = async (id)=>{
 
 export const updateData = async(id,updatedData)=>{
 
-    const res = await fetch(`https://zesty-raindrop-b8e4c7.netlify.app/api/db/data${id}`,{
+    const res = await fetch(`https://zesty-raindrop-b8e4c7.netlify.app/api/db/data/${id}`,{
         method:"PUT",
         headers:{
              "Content-Type":"application/json;charset=utf-8",        
