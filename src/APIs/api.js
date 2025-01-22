@@ -1,5 +1,5 @@
 const localURL = "http://localhost:3001/data"
-const netlifyURL = "https://vite-project-6tqp.onrender.com/data"
+const netlifyURL = "https://vite-project-bo93.onrender.com//data"
 //GET Api
  export const fetchData = async () => {
     const res = await fetch(netlifyURL);
